@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Netflix - Vantagens e Desvantagens</title>
 
     <style>
@@ -10,10 +11,14 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
+            font-family: Arial, Helvetica, sans-serif;
             background: #141414;
             color: white;
         }
@@ -26,13 +31,14 @@
             align-items: center;
             position: sticky;
             top: 0;
-            z-index: 10;
+            z-index: 1000;
         }
 
         .logo {
-            color: #e50914;
+            color: #E50914;
             font-size: 32px;
             font-weight: bold;
+            letter-spacing: 2px;
         }
 
         nav a {
@@ -43,17 +49,23 @@
         }
 
         nav a:hover {
-            color: #e50914;
+            color: #E50914;
         }
 
         .hero {
-            min-height: 500px;
+            min-height: 600px;
+            padding: 80px 8%;
             display: flex;
             align-items: center;
-            padding: 60px 8%;
+
             background:
-                linear-gradient(90deg, #000 20%, rgba(0,0,0,0.7), rgba(0,0,0,0.2)),
-                linear-gradient(135deg, #400000, #141414);
+                linear-gradient(
+                    90deg,
+                    rgba(0,0,0,0.98),
+                    rgba(0,0,0,0.6),
+                    rgba(0,0,0,0.2)
+                ),
+                linear-gradient(135deg, #650000, #141414);
         }
 
         .hero-content {
@@ -61,26 +73,26 @@
         }
 
         .hero h1 {
-            font-size: 52px;
-            margin-bottom: 20px;
+            font-size: 55px;
+            margin-bottom: 25px;
         }
 
         .hero h1 span {
-            color: #e50914;
+            color: #E50914;
         }
 
         .hero p {
-            font-size: 19px;
-            line-height: 1.6;
             color: #ddd;
+            font-size: 19px;
+            line-height: 1.7;
             margin-bottom: 30px;
         }
 
         .botao {
             display: inline-block;
-            background: #e50914;
+            background: #E50914;
             color: white;
-            padding: 14px 25px;
+            padding: 15px 30px;
             border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
@@ -88,113 +100,142 @@
         }
 
         .botao:hover {
-            background: #b20710;
+            background: #B20710;
             transform: scale(1.05);
         }
 
         section {
-            padding: 70px 8%;
-        }
-
-        .titulo {
-            text-align: center;
-            font-size: 36px;
-            margin-bottom: 45px;
-        }
-
-        .titulo span {
-            color: #e50914;
-        }
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 25px;
-        }
-
-        .card {
-            background: #222;
-            padding: 30px;
-            border-radius: 10px;
-            border-top: 4px solid #e50914;
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            background: #292929;
-        }
-
-        .card h3 {
-            font-size: 22px;
-            margin-bottom: 15px;
-        }
-
-        .card p {
-            color: #ccc;
-            line-height: 1.6;
+            padding: 80px 8%;
         }
 
         .vantagens {
             background: #181818;
         }
 
-        .desvantagens .card {
-            border-top-color: #777;
+        .desvantagens {
+            background: #141414;
         }
 
         .comparacao {
             background: #000;
         }
 
-        .tabela {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            background: #1c1c1c;
+        .titulo {
+            text-align: center;
+            font-size: 38px;
+            margin-bottom: 50px;
         }
 
-        .tabela th,
-        .tabela td {
+        .titulo span {
+            color: #E50914;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: #222;
+            padding: 30px;
+            border-radius: 8px;
+            border-top: 4px solid #E50914;
+
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 0.5s;
+        }
+
+        .card.aparecer {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            background: #2b2b2b;
+        }
+
+        .card h3 {
+            font-size: 21px;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #B3B3B3;
+            line-height: 1.7;
+        }
+
+        .desvantagens .card {
+            border-top-color: #777;
+        }
+
+        .desvantagens .card:hover {
+            border-top-color: #E50914;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #222;
+        }
+
+        th {
+            background: #E50914;
             padding: 18px;
             text-align: left;
+        }
+
+        td {
+            padding: 18px;
             border-bottom: 1px solid #333;
         }
 
-        .tabela th {
-            background: #e50914;
+        tr:hover {
+            background: #292929;
         }
 
         .positivo {
-            color: #39d353;
+            color: #46D369;
             font-weight: bold;
         }
 
         .negativo {
-            color: #ff5555;
+            color: #ff4d4d;
             font-weight: bold;
         }
 
         .conclusao {
-            text-align: center;
-            max-width: 800px;
+            max-width: 850px;
             margin: auto;
+            text-align: center;
         }
 
         .conclusao p {
-            color: #ccc;
-            line-height: 1.8;
+            color: #B3B3B3;
             font-size: 18px;
+            line-height: 1.8;
         }
 
         footer {
             background: #000;
+            color: #777;
             text-align: center;
-            padding: 25px;
-            color: #888;
+            padding: 30px;
         }
 
-        @media (max-width: 700px) {
+        @media (max-width: 900px) {
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero h1 {
+                font-size: 45px;
+            }
+        }
+
+        @media (max-width: 600px) {
             header {
                 flex-direction: column;
                 gap: 15px;
@@ -202,18 +243,23 @@
 
             nav a {
                 margin: 0 8px;
+                font-size: 13px;
+            }
+
+            .hero {
+                padding: 60px 25px;
             }
 
             .hero h1 {
                 font-size: 38px;
             }
 
-            .hero p {
-                font-size: 16px;
+            section {
+                padding: 60px 25px;
             }
 
-            .titulo {
-                font-size: 30px;
+            .cards {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -222,7 +268,10 @@
 <body>
 
     <header>
-        <div class="logo">NETFLIX</div>
+
+        <div class="logo">
+            NETFLIX
+        </div>
 
         <nav>
             <a href="#inicio">Início</a>
@@ -230,142 +279,177 @@
             <a href="#desvantagens">Desvantagens</a>
             <a href="#comparacao">Comparação</a>
         </nav>
+
     </header>
+
 
     <main>
 
+        <!-- INÍCIO -->
+
         <section class="hero" id="inicio">
+
             <div class="hero-content">
-                <h1>Netflix: <span>vantagens</span> e desvantagens</h1>
+
+                <h1>
+                    Netflix:
+                    <span>vantagens</span>
+                    e desvantagens
+                </h1>
 
                 <p>
-                    A Netflix é uma das plataformas de streaming mais conhecidas
-                    do mundo. Mas será que ela realmente vale a pena?
-                    Descubra os principais pontos positivos e negativos do serviço.
+                    A Netflix é uma das plataformas de streaming
+                    mais populares do mundo. Mas será que ela vale
+                    a pena? Veja seus principais pontos positivos
+                    e negativos.
                 </p>
 
                 <a href="#vantagens" class="botao">
                     Descobrir mais
                 </a>
+
             </div>
+
         </section>
 
+
+        <!-- VANTAGENS -->
+
         <section class="vantagens" id="vantagens">
-            <h2 class="titulo">Principais <span>vantagens</span></h2>
+
+            <h2 class="titulo">
+                Principais <span>vantagens</span>
+            </h2>
 
             <div class="cards">
 
                 <div class="card">
                     <h3>🎬 Grande catálogo</h3>
                     <p>
-                        A plataforma oferece uma grande variedade de filmes,
-                        séries, documentários e produções originais.
+                        A Netflix possui uma grande variedade de
+                        filmes, séries, documentários e produções
+                        originais.
                     </p>
                 </div>
 
                 <div class="card">
                     <h3>📱 Vários dispositivos</h3>
                     <p>
-                        É possível assistir aos conteúdos em celulares,
-                        computadores, tablets, Smart TVs e outros dispositivos.
+                        É possível assistir aos conteúdos em
+                        celulares, computadores, tablets e Smart TVs.
                     </p>
                 </div>
 
                 <div class="card">
                     <h3>🌎 Conteúdo internacional</h3>
                     <p>
-                        A Netflix possui produções de diversos países,
-                        permitindo conhecer diferentes culturas e histórias.
+                        Existem produções de diversos países,
+                        permitindo conhecer diferentes culturas.
                     </p>
                 </div>
 
                 <div class="card">
                     <h3>⭐ Produções originais</h3>
                     <p>
-                        A plataforma produz séries, filmes e documentários
-                        exclusivos que não estão disponíveis em outros serviços.
+                        A Netflix possui filmes e séries produzidos
+                        especialmente para a plataforma.
                     </p>
                 </div>
 
                 <div class="card">
-                    <h3>📥 Download</h3>
+                    <h3>📥 Downloads</h3>
                     <p>
-                        Alguns conteúdos podem ser baixados para assistir
-                        posteriormente sem precisar de conexão constante.
+                        Alguns conteúdos podem ser baixados para
+                        assistir posteriormente.
                     </p>
                 </div>
 
                 <div class="card">
                     <h3>🎯 Recomendações</h3>
                     <p>
-                        O sistema de recomendações sugere filmes e séries
-                        de acordo com os interesses do usuário.
+                        A plataforma recomenda conteúdos de acordo
+                        com os interesses do usuário.
                     </p>
                 </div>
 
             </div>
+
         </section>
 
+
+        <!-- DESVANTAGENS -->
+
         <section class="desvantagens" id="desvantagens">
-            <h2 class="titulo">Principais <span>desvantagens</span></h2>
+
+            <h2 class="titulo">
+                Principais <span>desvantagens</span>
+            </h2>
 
             <div class="cards">
 
                 <div class="card">
                     <h3>💰 Preço da assinatura</h3>
                     <p>
-                        É necessário pagar uma assinatura para ter acesso ao
-                        catálogo, e os preços podem pesar no orçamento.
+                        É necessário pagar uma assinatura para ter
+                        acesso ao conteúdo da plataforma.
                     </p>
                 </div>
 
                 <div class="card">
-                    <h3>🔄 Conteúdo pode sair</h3>
+                    <h3>🔄 Conteúdos podem sair</h3>
                     <p>
-                        Filmes e séries podem deixar o catálogo quando os
-                        contratos de distribuição terminam.
+                        Filmes e séries podem deixar o catálogo
+                        quando os contratos terminam.
                     </p>
                 </div>
 
                 <div class="card">
-                    <h3>📶 Depende da internet</h3>
+                    <h3>📶 Internet</h3>
                     <p>
-                        Para assistir online é necessária uma conexão de internet
-                        adequada, principalmente para conteúdos em alta qualidade.
+                        Para assistir online é necessário ter uma
+                        conexão de internet adequada.
                     </p>
                 </div>
 
                 <div class="card">
                     <h3>🔎 Catálogo varia</h3>
                     <p>
-                        A disponibilidade de filmes e séries pode variar de acordo
-                        com o país ou região.
+                        A disponibilidade de determinados conteúdos
+                        pode variar conforme o país.
                     </p>
                 </div>
 
                 <div class="card">
                     <h3>📺 Muitas opções</h3>
                     <p>
-                        A grande quantidade de conteúdo pode dificultar a escolha
-                        de algo para assistir.
+                        A grande quantidade de conteúdos pode tornar
+                        difícil escolher o que assistir.
                     </p>
                 </div>
 
                 <div class="card">
-                    <h3>⏰ Consumo excessivo</h3>
+                    <h3>⏰ Muito tempo de tela</h3>
                     <p>
-                        Assistir muitas horas de séries e filmes pode acabar
-                        ocupando muito tempo do dia.
+                        Assistir muitas horas de filmes e séries pode
+                        consumir bastante tempo.
                     </p>
                 </div>
 
             </div>
+
         </section>
 
-        <section class="comparacao" id="comparacao">
-            <h2 class="titulo">Resumo da <span>análise</span></h2>
 
-            <table class="tabela">
+        <!-- COMPARAÇÃO -->
+
+        <section class="comparacao" id="comparacao">
+
+            <h2 class="titulo">
+                Resumo da <span>análise</span>
+            </h2>
+
+            <table>
+
                 <tr>
                     <th>Característica</th>
                     <th>Avaliação</th>
@@ -373,63 +457,131 @@
 
                 <tr>
                     <td>Variedade de conteúdo</td>
-                    <td class="positivo">✔ Ponto positivo</td>
+                    <td class="positivo">✔ Vantagem</td>
                 </tr>
 
                 <tr>
                     <td>Facilidade de uso</td>
-                    <td class="positivo">✔ Ponto positivo</td>
+                    <td class="positivo">✔ Vantagem</td>
                 </tr>
 
                 <tr>
                     <td>Produções originais</td>
-                    <td class="positivo">✔ Ponto positivo</td>
+                    <td class="positivo">✔ Vantagem</td>
                 </tr>
 
                 <tr>
-                    <td>Custo da assinatura</td>
-                    <td class="negativo">✘ Ponto negativo</td>
+                    <td>Preço</td>
+                    <td class="negativo">✘ Desvantagem</td>
                 </tr>
 
                 <tr>
-                    <td>Disponibilidade dos conteúdos</td>
-                    <td class="negativo">✘ Pode variar</td>
+                    <td>Catálogo</td>
+                    <td class="negativo">✘ Pode mudar</td>
                 </tr>
 
                 <tr>
-                    <td>Necessidade de internet</td>
-                    <td class="negativo">✘ Em alguns casos</td>
+                    <td>Internet</td>
+                    <td class="negativo">✘ Necessária</td>
                 </tr>
+
             </table>
+
         </section>
 
+
+        <!-- CONCLUSÃO -->
+
         <section>
+
             <div class="conclusao">
-                <h2 class="titulo">Conclusão</h2>
+
+                <h2 class="titulo">
+                    Conclusão
+                </h2>
 
                 <p>
-                    A Netflix possui diversas vantagens, como seu catálogo
-                    variado, facilidade de acesso e grande quantidade de
-                    produções originais. Por outro lado, existem desvantagens,
-                    como o custo da assinatura, a mudança frequente do catálogo
-                    e a necessidade de uma boa conexão com a internet.
+                    A Netflix possui diversas vantagens, como seu
+                    catálogo variado, facilidade de acesso e
+                    produções originais.
                 </p>
 
                 <br>
 
                 <p>
-                    Portanto, a escolha depende das necessidades e preferências
-                    de cada pessoa. Para quem gosta de filmes e séries e utiliza
-                    bastante o serviço, a Netflix pode ser uma boa opção.
+                    Porém, também existem desvantagens, como o custo
+                    da assinatura, mudanças no catálogo e a
+                    necessidade de internet para assistir online.
                 </p>
+
+                <br>
+
+                <p>
+                    Portanto, a Netflix pode ser uma boa opção para
+                    quem gosta de filmes e séries, mas a escolha
+                    depende das necessidades de cada pessoa.
+                </p>
+
             </div>
+
         </section>
 
     </main>
 
+
     <footer>
-        <p>© 2026 - Trabalho sobre a Netflix | Vantagens e Desvantagens</p>
+
+        <p>
+            © 2026 - Trabalho sobre a Netflix
+        </p>
+
     </footer>
+
+
+    <script>
+
+        // Animação dos cards
+
+        const cards = document.querySelectorAll(".card");
+
+        const observador = new IntersectionObserver(
+            function(elementos) {
+
+                elementos.forEach(function(elemento) {
+
+                    if (elemento.isIntersecting) {
+                        elemento.target.classList.add("aparecer");
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.15
+            }
+        );
+
+        cards.forEach(function(card) {
+            observador.observe(card);
+        });
+
+
+        // Efeito no cabeçalho
+
+        window.addEventListener("scroll", function() {
+
+            const header = document.querySelector("header");
+
+            if (window.scrollY > 50) {
+                header.style.boxShadow =
+                    "0 5px 20px rgba(0,0,0,0.7)";
+            } else {
+                header.style.boxShadow = "none";
+            }
+
+        });
+
+    </script>
 
 </body>
 </html>
